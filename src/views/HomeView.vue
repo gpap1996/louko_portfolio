@@ -1,10 +1,14 @@
 <script setup>
-import TheLoader from '@/components/TheLoader.vue'
-import { useBaseStore } from '@/stores/base'
-import { storeToRefs } from 'pinia'
 import UnityWebgl from 'unity-webgl'
 import UnityVue from 'unity-webgl/vue'
+
+import TheLoader from '@/components/TheLoader.vue'
+import TheAppbar from '@/components/TheAppbar.vue'
+
 import { ref } from 'vue'
+import { useBaseStore } from '@/stores/base'
+import { storeToRefs } from 'pinia'
+
 const dialog = ref(true)
 const header = ref(false)
 const { webglLoader } = storeToRefs(useBaseStore())
@@ -34,6 +38,7 @@ unityContext
 
 <template>
   <div>
+    <TheAppbar />
     <TheLoader v-if="dialog" @closeDialog="dialog = false" />
     <UnityVue width="100vw" height="100vh" :unity="unityContext" />
   </div>
@@ -45,9 +50,8 @@ unityContext
   padding: 0;
   overflow: hidden;
 }
-/* 
+
 canvas {
-  width: 100vw !important;
-  height: 100vh !important;
-} */
+  cursor: grab !important;
+}
 </style>

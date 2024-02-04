@@ -20,13 +20,13 @@
         }
       }"
       style="background-size: 200%"
-      class="flex items-center bg-gradient-to-l from-white from-50% to-orange to-50% bg-right hover:bg-left relative top-[200px] text-black px-7 py-2 rounded-[32px] hover:text-white transition-all duration-500"
+      class="flex items-center bg-gradient-to-l from-white from-50% to-orange to-50% bg-right hover:bg-left relative top-[200px] text-black px-7 py-2 rounded-[32px] hover:text-white transition-all duration-500 cursor-pointer"
       v-if="!webglLoader"
       @click="$emit('closeDialog')"
     >
       <div class="text-[20px]">CONTINUE</div>
 
-      <div class="mdi mdi-arrow-right ml-2 text-[25px] mt-[3px]"></div>
+      <div class="mdi mdi-arrow-right ml-2 text-[25px] mt-[1px]"></div>
     </button>
   </div>
 </template>
