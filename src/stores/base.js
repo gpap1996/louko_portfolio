@@ -1,8 +1,11 @@
-import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { reactive } from 'vue'
 
 export const useBaseStore = defineStore('base', () => {
-  const webglLoader = ref(true)
+  const dialog = reactive({
+    open: false,
+    component: 'none'
+  })
 
-  return { webglLoader }
+  return { dialog }
 })

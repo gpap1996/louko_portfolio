@@ -7,7 +7,7 @@ export default {
     extend: {
       colors: {
         white: '#ffffff',
-        black: '#1A1A1A',
+        black: '#1C1C1C',
         orange: '#d97706'
       }
     }
