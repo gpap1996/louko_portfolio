@@ -22,13 +22,4 @@ const onCloseDialog = () => {
 }
 </script>
 
-<style lang="scss">
-@font-face {
-  font-family: 'EHSMB';
-  src: url('@/assets/EHSMB.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-$font-family-main: 'EHSMB', sans-serif;
-</style>
+<style lang="scss"></style>
