@@ -2,13 +2,19 @@
   <div>
     <TheAppbar v-if="appbar" />
     <div
-      class="absolute top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-black noSelect text-[20px] text-center"
+      style="
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: #1c1c1c;
+        text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
+      "
+      class="absolute top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-white noSelect text-[20px] text-center"
     >
       <Transition>
-        <div class="text-[22px] w-screen p-10 text-black" v-if="tab1">
+        <div class="text-[22px] w-screen p-10" v-if="tab1">
           Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
         </div>
       </Transition>
+
       <Transition>
         <div v-if="tab2">Crafting Immersive Experiences in VR, AR, and Indie Games</div>
       </Transition>
@@ -18,7 +24,7 @@
           <div>Virtual diver</div>
           <button
             @click="(dialog.open = true), (dialog.component = 'Virtual Diver')"
-            class="bg-white py-2 px-4"
+            class="bg-white py-2 px-4 text-black"
           >
             Open dialog
           </button>
@@ -72,9 +78,9 @@ const tab7 = ref(false)
 //webgl init
 const unityContext = new UnityWebgl({
   loaderUrl: '/carwebgl/URPwebGLTest.loader.js',
-  dataUrl: '/carwebgl/webgl.data',
-  frameworkUrl: '/carwebgl/build.framework.js',
-  codeUrl: '/carwebgl/build.wasm'
+  dataUrl: '/carwebgl/URPwebGLTest.data.gz',
+  frameworkUrl: '/carwebgl/URPwebGLTest.framework.js.gz',
+  codeUrl: '/carwebgl/URPwebGLTest.wasm.gz'
 })
 
 //webgl listeners
