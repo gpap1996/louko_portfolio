@@ -1,7 +1,7 @@
 [[headers]]
   for = "/Build/*.data.gz"
   [headers.values]
-    Content-Encoding = "gz"
+    Content-Encoding = "gzip"
     Content-Type = "application/octet-stream"
 
 [[headers]]
