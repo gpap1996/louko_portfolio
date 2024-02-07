@@ -10,45 +10,51 @@
       class="absolute top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-white noSelect text-[20px] text-center"
     >
       <Transition>
-        <div class="text-[22px] w-screen p-10" v-if="tab1">
+        <div class="text-[22px] w-screen p-10" v-if="tab == 'Welcome'">
           Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
         </div>
       </Transition>
 
       <Transition>
-        <div v-if="tab2">Crafting Immersive Experiences in VR, AR, and Indie Games</div>
+        <div v-if="tab == 'Skills'">Crafting Immersive Experiences in VR, AR, and Indie Games</div>
       </Transition>
 
       <Transition>
-        <div v-if="tab3">
-          <div>Virtual diver</div>
-          <button
-            @click="(dialog.open = true), (dialog.component = 'Virtual Diver')"
-            class="bg-white py-2 px-4 text-black"
-          >
+        <div v-if="tab == 'VirtualDiver'">
+          <div>Virtual Diver</div>
+          <button @click="onOpenDialog(VirtualDiver)" class="bg-white py-2 px-4 text-black">
             Open dialog
           </button>
         </div>
       </Transition>
 
       <Transition>
-        <div v-if="tab4">AR dark past</div>
+        <div v-if="tab == 'Ar'">AR dark past</div>
       </Transition>
 
       <Transition>
-        <div v-if="tab5">More about me</div>
+        <div v-if="tab == 'About'">More about me</div>
       </Transition>
 
       <Transition>
-        <div v-if="tab6">Contact</div>
+        <div v-if="tab == 'Contact'">Contact</div>
       </Transition>
 
       <Transition>
-        <div v-if="tab7">Garage</div>
+        <div v-if="tab == 'Garage'">Garage</div>
       </Transition>
     </div>
     <TheLoader v-if="loader" />
-    <UnityVue style="z-index: 1" width="100vw" height="100vh" :unity="unityContext" />
+    <UnityVue
+      tabindex="-1"
+      width="100vw"
+      height="100vh"
+      :unity="unityContext"
+      :class="dialog ? 'hidden' : 'block'"
+    />
+    <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
+      <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
+    </div>
   </div>
 </template>
 
@@ -56,31 +62,35 @@
 import UnityWebgl from 'unity-webgl'
 import UnityVue from 'unity-webgl/vue'
 
+import VirtualDiver from '@/components/Dialogs/VirtualDiver.vue'
 import TheLoader from '@/components/Util/TheLoader.vue'
 import TheAppbar from '@/components/Layout/TheAppbar.vue'
 
-import { ref } from 'vue'
-import { useBaseStore } from '@/stores/base'
-import { storeToRefs } from 'pinia'
+import { markRaw, ref } from 'vue'
 
-const base = useBaseStore()
-const { dialog } = storeToRefs(base)
-
+const dialog = ref(false)
+const dialogComponent = ref(null)
 const loader = ref(true)
 const appbar = ref(false)
-const tab1 = ref(false)
-const tab2 = ref(false)
-const tab3 = ref(false)
-const tab4 = ref(false)
-const tab5 = ref(false)
-const tab6 = ref(false)
-const tab7 = ref(false)
+const tab = ref(null)
+
+const onOpenDialog = (component) => {
+  dialog.value = true
+  dialogComponent.value = markRaw(component)
+}
+
+const onCloseDialog = () => {
+  console.log('onclose')
+  dialog.value = false
+  dialogComponent.value = null
+}
+
 //webgl init
 const unityContext = new UnityWebgl({
   loaderUrl: '/carwebgl/URPwebGLTest.loader.js',
-  dataUrl: '/carwebgl/URPwebGLTest.data.gz',
-  frameworkUrl: '/carwebgl/URPwebGLTest.framework.js.gz',
-  codeUrl: '/carwebgl/URPwebGLTest.wasm.gz'
+  dataUrl: '/carwebgl/webgl.data',
+  frameworkUrl: '/carwebgl/build.framework.js',
+  codeUrl: '/carwebgl/build.wasm'
 })
 
 //webgl listeners
@@ -98,46 +108,46 @@ unityContext
     unityContext.on('showDialog', (data) => {
       switch (data) {
         case 'Tab1Open':
-          tab1.value = true
+          tab.value = 'Welcome'
           break
         case 'Tab1Close':
-          tab1.value = false
+          tab.value = null
           break
         case 'Tab2Open':
-          tab2.value = true
+          tab.value = 'Skills'
           break
         case 'Tab2Close':
-          tab2.value = false
+          tab.value = null
           break
         case 'Tab3Open':
-          tab3.value = true
+          tab.value = 'VirtualDiver'
           break
         case 'Tab3Close':
-          tab3.value = false
+          tab.value = null
           break
         case 'Tab4Open':
-          tab4.value = true
+          tab.value = 'Ar'
           break
         case 'Tab4Close':
-          tab4.value = false
+          tab.value = null
           break
         case 'Tab5Open':
-          tab5.value = true
+          tab.value = 'About'
           break
         case 'Tab5Close':
-          tab5.value = false
+          tab.value = null
           break
         case 'Tab6Open':
-          tab6.value = true
+          tab.value = 'Contact'
           break
         case 'Tab6Close':
-          tab6.value = false
+          tab.value = null
           break
         case 'Tab7Open':
-          tab7.value = true
+          tab.value = 'Garage'
           break
         case 'Tab7Close':
-          tab7.value = false
+          tab.value = null
           break
         default:
           break
