@@ -7,7 +7,7 @@
 [[headers]]
   for = "/Build/*.wasm.gz"
   [headers.values]
-    Content-Encoding = "gz"
+    Content-Encoding = "gzip"
     Content-Type = "application/wasm"
 
 [[headers]]
