@@ -87,10 +87,10 @@ const onCloseDialog = () => {
 
 //webgl init
 const unityContext = new UnityWebgl({
-  loaderUrl: '/carwebgl/URPwebGLTest.loader.js',
-  dataUrl: '/carwebgl/URPwebGLTest.data.gz',
-  frameworkUrl: '/carwebgl/URPwebGLTest.framework.js.gz',
-  codeUrl: '/carwebgl/URPwebGLTest.wasm.gz'
+  loaderUrl: '/URPwebGLTest.loader.js',
+  dataUrl: '/webgl.data',
+  frameworkUrl: '/build.framework.js',
+  codeUrl: '/build.wasm'
 })
 
 //webgl listeners
