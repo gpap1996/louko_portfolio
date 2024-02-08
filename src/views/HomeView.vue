@@ -87,9 +87,12 @@ const onCloseDialog = () => {
 
 //webgl init
 const unityContext = new UnityWebgl({
-  loaderUrl: '/URPwebGLTest.loader.js',
-  dataUrl: '/webgl.data',
-  frameworkUrl: '/build.framework.js',
+  loaderUrl:
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/URPwebGLTest.loader.js?alt=media&token=2e27d9ec-cec8-40a4-9479-fb804334ce21',
+  dataUrl:
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/webgl.data?alt=media&token=bf9ca3ee-56d7-46b4-806e-e1d2bba62b87',
+  frameworkUrl:
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.framework.js?alt=media&token=d65d6958-3f18-4310-82b9-e9ed603506f7',
   codeUrl: '/build.wasm'
 })
 
