@@ -93,7 +93,8 @@ const unityContext = new UnityWebgl({
     'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/webgl.data?alt=media&token=bf9ca3ee-56d7-46b4-806e-e1d2bba62b87',
   frameworkUrl:
     'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.framework.js?alt=media&token=d65d6958-3f18-4310-82b9-e9ed603506f7',
-  codeUrl: '/build.wasm'
+  codeUrl:
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.wasm?alt=media&token=b2447007-cd5e-4562-baef-983a71c72fa8'
 })
 
 //webgl listeners
