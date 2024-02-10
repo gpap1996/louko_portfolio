@@ -88,13 +88,13 @@ const onCloseDialog = () => {
 //webgl init
 const unityContext = new UnityWebgl({
   loaderUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/URPnoColWebGL.loader.js?alt=media&token=77fb47b6-34cc-44ed-951c-9aa82d94b4e2',
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/URPnoColWebGL.loader.js?alt=media&token=d80b1517-3ee7-453b-b18a-a746c5a11a07',
   dataUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/webgl.data?alt=media&token=b56d75d7-fedf-46c1-ab37-56eb1572d160',
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/webgl.data?alt=media&token=afccfacc-b7c5-43c1-8ce9-78329dad53ad',
   frameworkUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.framework.js?alt=media&token=3ce0cb69-7ebd-474a-b18a-a9a6e1a7aaa0',
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.framework.js?alt=media&token=e155c032-0342-41b7-9684-b99caa78d3d3',
   codeUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.wasm?alt=media&token=23c2a5db-7731-4d4a-bff7-6ae56ece53fa'
+    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.wasm?alt=media&token=d76973df-7963-4622-8b6a-3dbebda46eca'
 })
 
 //webgl listeners
