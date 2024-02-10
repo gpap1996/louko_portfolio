@@ -163,6 +163,8 @@ unityContext
 
 canvas {
   cursor: grab !important;
+  min-height: 100dvh !important;
+  min-height: 100vh !important;
 }
 
 .noSelect {
