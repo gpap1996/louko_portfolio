@@ -45,13 +45,7 @@
       </Transition>
     </div>
     <TheLoader v-if="loader" />
-    <UnityVue
-      tabindex="-1"
-      width="100vw"
-      height="100dvh"
-      :unity="unityContext"
-      :class="dialog ? 'hidden' : 'block'"
-    />
+    <UnityVue tabindex="-1" :unity="unityContext" :class="dialog ? 'hidden' : 'block h-dvh'" />
     <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
       <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
     </div>
