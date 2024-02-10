@@ -44,7 +44,6 @@
         <div v-if="tab == 'Garage'">Garage</div>
       </Transition>
     </div>
-    <button @click="onFullscreen" class="absolute t-0 l-0 bg-white p-10">fullscreen</button>
     <TheLoader v-if="loader" />
     <UnityVue tabindex="-1" :unity="unityContext" :class="dialog ? 'hidden' : 'block h-dvh'" />
     <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
@@ -68,10 +67,6 @@ const dialogComponent = ref(null)
 const loader = ref(true)
 const appbar = ref(false)
 const tab = ref(null)
-
-const onFullscreen = () => {
-  unityContext.setFullscreen({ enabled: true })
-}
 
 const onOpenDialog = (component) => {
   dialog.value = true
@@ -104,10 +99,12 @@ unityContext
         loader.value = false
       }, 2500)
   })
-  .on('create', () => {
-    unityContext.setFullscreen(true)
-  })
+  .on('create', () => {})
   .on('mounted', () => {
+    setTimeout(() => {
+      unityContext.setFullscreen({ enabled: true })
+    }, 1000)
+
     unityContext.on('showDialog', (data) => {
       switch (data) {
         case 'Tab1Open':
