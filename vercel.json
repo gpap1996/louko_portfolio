@@ -1,16 +1,7 @@
 {
   "headers": [
     {
-      "source": "/(.*\\.br)",
-      "headers": [
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        }
-      ]
-    },
-    {
-      "source": "/(.*\\.wasm\\.br)",
+      "source": "/URPnoColWebGL.wasm.br",
       "headers": [
         {
           "key": "Content-Encoding",
@@ -23,7 +14,7 @@
       ]
     },
     {
-      "source": "/(.*\\.framework\\.js\\.br)",
+      "source": "/URPnoColWebGL.framework.js.br)",
       "headers": [
         {
           "key": "Content-Encoding",
@@ -36,7 +27,7 @@
       ]
     },
     {
-      "source": "/(.*\\.data\\.br)",
+      "source": "/URPnoColWebGL.data.br",
       "headers": [
         {
           "key": "Content-Encoding",
