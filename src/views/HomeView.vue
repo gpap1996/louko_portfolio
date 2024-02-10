@@ -56,6 +56,7 @@
 <script setup>
 import UnityWebgl from 'unity-webgl'
 import UnityVue from 'unity-webgl/vue'
+import { isMobile } from 'mobile-device-detect'
 
 import VirtualDiver from '@/components/Dialogs/VirtualDiver.vue'
 import TheLoader from '@/components/Util/TheLoader.vue'
@@ -101,7 +102,7 @@ unityContext
   })
   .on('create', () => {})
   .on('mounted', () => {
-    if (window.innerWidth < 780) {
+    if (isMobile) {
       setTimeout(() => {
         unityContext.setFullscreen({ enabled: true })
       }, 2500)
