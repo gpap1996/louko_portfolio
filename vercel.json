@@ -26,6 +26,15 @@
           "value": "br"
         }
       ]
+    },
+    {
+      "source": "/(.*\\.data\\.br)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "br"
+        }
+      ]
     }
   ]
 }
