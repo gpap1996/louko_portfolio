@@ -1,12 +1,6 @@
 <template>
   <div class="fixed top-0 left-0 w-screen p-4 flex items-center justify-space-between">
-    <div class="flex flex-col gap-[4.5px] mr-4" @click="menu = !menu">
-      <div :class="menu ? 'rotate' : ''" class="menu-line"></div>
-
-      <div :class="menu ? 'hidden' : 'block'" class="menu-line"></div>
-
-      <div :class="menu ? 'neg-rotate' : ''" class="menu-line"></div>
-    </div>
+    <MenuButton :menu="menu" @toggleMenu="toggleMenu" />
 
     <div class="text-[22px] leading-6">
       LOUKOs <br />
@@ -21,26 +15,32 @@
 </template>
 
 <script setup>
+import MenuButton from '../Util/MenuButton.vue'
+
 import { useFullscreen } from '@vueuse/core'
 import { ref } from 'vue'
 
 const { isFullscreen, toggle } = useFullscreen()
 const menu = ref(false)
+const toggleMenu = () => {
+  menu.value = !menu.value
+}
 </script>
 
 <style lang="scss" scoped>
-.menu-line {
-  border: 1.5px solid black;
-  width: 22px;
-  overflow: visible;
-  transition: all ease 300ms;
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: #4c23e8;
+  margin: 0;
+  padding: 0;
 }
 
-.rotate {
-  rotate: 45deg;
-}
-
-.neg-rotate {
-  rotate: -45deg;
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  cursor: pointer;
 }
 </style>
