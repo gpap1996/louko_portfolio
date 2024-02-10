@@ -1,54 +1,74 @@
 <template>
   <div>
-    <TheAppbar v-if="appbar" />
     <div
-      style="
-        -webkit-text-stroke-width: 0.1px;
-        -webkit-text-stroke-color: #1c1c1c;
-        text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
-      "
-      class="absolute top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-white noSelect text-[20px] text-center"
+      v-if="page == 'welcome'"
+      class="w-screen h-screen bg-black flex items-center justify-center"
     >
-      <Transition>
-        <div class="text-[22px] w-screen p-10" v-if="tab == 'Welcome'">
-          Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
-        </div>
-      </Transition>
-
-      <Transition>
-        <div v-if="tab == 'Skills'">Crafting Immersive Experiences in VR, AR, and Indie Games</div>
-      </Transition>
-
-      <Transition>
-        <div v-if="tab == 'VirtualDiver'">
-          <div>Virtual Diver</div>
-          <button @click="onOpenDialog(VirtualDiver)" class="bg-white py-2 px-4 text-black">
-            Open dialog
-          </button>
-        </div>
-      </Transition>
-
-      <Transition>
-        <div v-if="tab == 'Ar'">AR dark past</div>
-      </Transition>
-
-      <Transition>
-        <div v-if="tab == 'About'">More about me</div>
-      </Transition>
-
-      <Transition>
-        <div v-if="tab == 'Contact'">Contact</div>
-      </Transition>
-
-      <Transition>
-        <div v-if="tab == 'Garage'">Garage</div>
-      </Transition>
+      <button
+        @click="onChangePage"
+        class="text-black bg-white text-[22px] py-2 px-6 rounded-lg cursor-pointer"
+      >
+        Enter Louko's Showcase
+      </button>
     </div>
+    <div v-else>
+      <TheAppbar v-if="appbar" />
+      <div
+        style="
+          -webkit-text-stroke-width: 0.1px;
+          -webkit-text-stroke-color: #1c1c1c;
+          text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
+        "
+        class="absolute top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-white noSelect text-[20px] text-center"
+      >
+        <Transition>
+          <div class="text-[22px] w-screen p-10" v-if="tab == 'Welcome'">
+            Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
+          </div>
+        </Transition>
 
-    <TheLoader v-if="loader" />
-    <UnityVue tabindex="-1" :unity="unityContext" :class="dialog ? 'hidden' : 'block h-dvh'" />
-    <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
-      <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
+        <Transition>
+          <div v-if="tab == 'Skills'">
+            Crafting Immersive Experiences in VR, AR, and Indie Games
+          </div>
+        </Transition>
+
+        <Transition>
+          <div v-if="tab == 'VirtualDiver'">
+            <div>Virtual Diver</div>
+            <button @click="onOpenDialog(VirtualDiver)" class="bg-white py-2 px-4 text-black">
+              Open dialog
+            </button>
+          </div>
+        </Transition>
+
+        <Transition>
+          <div v-if="tab == 'Ar'">AR dark past</div>
+        </Transition>
+
+        <Transition>
+          <div v-if="tab == 'About'">More about me</div>
+        </Transition>
+
+        <Transition>
+          <div v-if="tab == 'Contact'">Contact</div>
+        </Transition>
+
+        <Transition>
+          <div v-if="tab == 'Garage'">Garage</div>
+        </Transition>
+      </div>
+
+      <TheLoader v-if="loader" />
+      <UnityVue
+        @click="onClick"
+        tabindex="-1"
+        :unity="unityContext"
+        :class="dialog ? 'hidden' : 'block h-dvh'"
+      />
+      <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
+        <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
+      </div>
     </div>
   </div>
 </template>
@@ -56,8 +76,7 @@
 <script setup>
 import UnityWebgl from 'unity-webgl'
 import UnityVue from 'unity-webgl/vue'
-import { isMobile } from 'mobile-device-detect'
-
+import { useFullscreen } from '@vueuse/core'
 import VirtualDiver from '@/components/Dialogs/VirtualDiver.vue'
 import TheLoader from '@/components/Util/TheLoader.vue'
 import TheAppbar from '@/components/Layout/TheAppbar.vue'
@@ -69,15 +88,23 @@ const dialogComponent = ref(null)
 const loader = ref(true)
 const appbar = ref(false)
 const tab = ref(null)
+const page = ref('welcome')
 const onOpenDialog = (component) => {
   dialog.value = true
   dialogComponent.value = markRaw(component)
 }
 
+const { toggle } = useFullscreen()
+
 const onCloseDialog = () => {
   console.log('onclose')
   dialog.value = false
   dialogComponent.value = null
+}
+
+const onChangePage = () => {
+  if (window.innerWidth < 780) toggle()
+  page.value = 'home'
 }
 
 //webgl init
@@ -92,6 +119,10 @@ const unityContext = new UnityWebgl({
     'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.wasm?alt=media&token=d76973df-7963-4622-8b6a-3dbebda46eca'
 })
 
+const onClick = () => {
+  console.log(onClick)
+}
+
 //webgl listeners
 unityContext
   .on('progress', (progress) => {
@@ -102,9 +133,7 @@ unityContext
   })
   .on('create', () => {})
   .on('mounted', () => {
-    setTimeout(() => {
-      unityContext.setFullscreen({ enabled: true })
-    }, 2500)
+    setTimeout(() => {}, 2500)
 
     unityContext.on('showDialog', (data) => {
       switch (data) {
