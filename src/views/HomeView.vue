@@ -44,6 +44,7 @@
         <div v-if="tab == 'Garage'">Garage</div>
       </Transition>
     </div>
+
     <TheLoader v-if="loader" />
     <UnityVue tabindex="-1" :unity="unityContext" :class="dialog ? 'hidden' : 'block h-dvh'" />
     <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
@@ -67,7 +68,6 @@ const dialogComponent = ref(null)
 const loader = ref(true)
 const appbar = ref(false)
 const tab = ref(null)
-
 const onOpenDialog = (component) => {
   dialog.value = true
   dialogComponent.value = markRaw(component)
@@ -101,7 +101,7 @@ unityContext
   })
   .on('create', () => {})
   .on('mounted', () => {
-    if (window.innerWidth <= 760) {
+    if (window.innerWidth < 780) {
       setTimeout(() => {
         unityContext.setFullscreen({ enabled: true })
       }, 2500)
