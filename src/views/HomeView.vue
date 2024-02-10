@@ -48,7 +48,7 @@
     <UnityVue
       tabindex="-1"
       width="100vw"
-      height="100vh"
+      height="100dvh"
       :unity="unityContext"
       :class="dialog ? 'hidden' : 'block'"
     />
