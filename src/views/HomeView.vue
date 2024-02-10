@@ -106,9 +106,9 @@ const onChangePage = () => {
 //webgl init
 const unityContext = new UnityWebgl({
   loaderUrl: '/URPnoColWebGL.loader.js',
-  dataUrl: 'URPnoColWebGL.data.gz',
-  frameworkUrl: 'URPnoColWebGL.framework.js.gz',
-  codeUrl: 'URPnoColWebGL.wasm.gz'
+  dataUrl: '/URPnoColWebGL.data.gz',
+  frameworkUrl: '/build.framework.js',
+  codeUrl: '/URPnoColWebGL.wasm.gz'
 })
 
 //webgl listeners
