@@ -105,14 +105,10 @@ const onChangePage = () => {
 
 //webgl init
 const unityContext = new UnityWebgl({
-  loaderUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/URPnoColWebGL.loader.js?alt=media&token=e9493e56-ec5b-4d0b-943b-a3f751f44823',
-  dataUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/webgl.data?alt=media&token=9244a6ba-c170-4df7-94ca-ab5297983410',
-  frameworkUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.framework.js?alt=media&token=754d9991-91b4-4b12-955b-9fab665dcc4b',
-  codeUrl:
-    'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.wasm?alt=media&token=ebb56967-bfc2-438d-8094-8281c0e60f89'
+  loaderUrl: '/URPnoColWebGL.loader.js',
+  dataUrl: 'URPnoColWebGL.data.gz',
+  frameworkUrl: 'URPnoColWebGL.framework.js.gz',
+  codeUrl: 'URPnoColWebGL.wasm.gz'
 })
 
 //webgl listeners
@@ -125,8 +121,7 @@ unityContext
   })
   .on('create', () => {})
   .on('mounted', () => {
-    setTimeout(() => {}, 2500)
-
+    appbar.value = true
     unityContext.on('showDialog', (data) => {
       switch (data) {
         case 'Tab1Open':
