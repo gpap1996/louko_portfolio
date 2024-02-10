@@ -102,11 +102,9 @@ unityContext
   })
   .on('create', () => {})
   .on('mounted', () => {
-    if (isMobile) {
-      setTimeout(() => {
-        unityContext.setFullscreen({ enabled: true })
-      }, 2500)
-    }
+    setTimeout(() => {
+      unityContext.setFullscreen({ enabled: true })
+    }, 2500)
 
     unityContext.on('showDialog', (data) => {
       switch (data) {
