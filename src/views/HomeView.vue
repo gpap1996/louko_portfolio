@@ -60,7 +60,13 @@
       </div>
 
       <TheLoader v-if="loader" />
-      <UnityVue tabindex="-1" :unity="unityContext" :class="dialog ? 'hidden' : 'block h-dvh'" />
+      <UnityVue
+        width="100vw"
+        height="100vh"
+        tabindex="-1"
+        :unity="unityContext"
+        :class="dialog ? 'hidden' : 'block h-dvh'"
+      />
       <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
         <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
       </div>
@@ -187,7 +193,6 @@ unityContext
 
 canvas {
   cursor: grab !important;
-  min-height: 100dvh !important;
   min-height: 100vh !important;
 }
 
