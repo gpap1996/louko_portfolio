@@ -60,12 +60,7 @@
       </div>
 
       <TheLoader v-if="loader" />
-      <UnityVue
-        @click="onClick"
-        tabindex="-1"
-        :unity="unityContext"
-        :class="dialog ? 'hidden' : 'block h-dvh'"
-      />
+      <UnityVue tabindex="-1" :unity="unityContext" :class="dialog ? 'hidden' : 'block h-dvh'" />
       <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
         <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
       </div>
@@ -80,6 +75,7 @@ import { useFullscreen } from '@vueuse/core'
 import VirtualDiver from '@/components/Dialogs/VirtualDiver.vue'
 import TheLoader from '@/components/Util/TheLoader.vue'
 import TheAppbar from '@/components/Layout/TheAppbar.vue'
+import { isMobile } from 'mobile-device-detect'
 
 import { markRaw, ref } from 'vue'
 
@@ -103,7 +99,7 @@ const onCloseDialog = () => {
 }
 
 const onChangePage = () => {
-  if (window.innerWidth < 780) toggle()
+  if (isMobile) toggle()
   page.value = 'home'
 }
 
@@ -118,10 +114,6 @@ const unityContext = new UnityWebgl({
   codeUrl:
     'https://firebasestorage.googleapis.com/v0/b/loukoshowcase.appspot.com/o/build.wasm?alt=media&token=d76973df-7963-4622-8b6a-3dbebda46eca'
 })
-
-const onClick = () => {
-  console.log(onClick)
-}
 
 //webgl listeners
 unityContext
