@@ -2,14 +2,14 @@
   <div class="fixed top-0 left-0 w-screen p-4 flex items-center justify-space-between">
     <MenuButton :menu="menu" @toggleMenu="toggleMenu" />
 
-    <div class="text-[22px] leading-6">
+    <div class="text-[22px] leading-6 text-black">
       LOUKOs <br />
       SHOWCASE
     </div>
     <div
       @click="toggle"
       :class="isFullscreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'"
-      class="mdi ml-auto text-[30px] cursor-pointer"
+      class="mdi ml-auto text-[30px] cursor-pointer text-black"
     ></div>
   </div>
 </template>
