@@ -101,7 +101,7 @@ unityContext
   })
   .on('create', () => {})
   .on('mounted', () => {
-    if (window.innerWidth <= 480) {
+    if (window.innerWidth <= 760) {
       setTimeout(() => {
         unityContext.setFullscreen({ enabled: true })
       }, 2500)
