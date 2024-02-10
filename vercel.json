@@ -1,56 +1,58 @@
-"headers": [
+{
+  "headers": [
     {
       "source": "/(.*\\.unityweb)",
-      "headers" : [
+      "headers": [
         {
-          "key" : "Content-Encoding",
-          "value" : "gzip"
+          "key": "Content-Encoding",
+          "value": "gzip"
         }
       ]
     },
     {
       "source": "/(.*\\.wasm\\.unityweb)",
-      "headers" : [
+      "headers": [
         {
-          "key" : "Content-Type",
-          "value" : "application/wasm"
+          "key": "Content-Type",
+          "value": "application/wasm"
         }
       ]
     },
     {
       "source": "/(.*\\.gz)",
-      "headers" : [
+      "headers": [
         {
-          "key" : "Content-Encoding",
-          "value" : "gzip"
+          "key": "Content-Encoding",
+          "value": "gzip"
         }
       ]
     },
     {
       "source": "/(.*\\.wasm\\.gz)",
-      "headers" : [
+      "headers": [
         {
-          "key" : "Content-Type",
-          "value" : "application/wasm"
+          "key": "Content-Type",
+          "value": "application/wasm"
         }
       ]
     },
     {
       "source": "/(.*\\.br)",
-      "headers" : [
+      "headers": [
         {
-          "key" : "Content-Encoding",
-          "value" : "br"
+          "key": "Content-Encoding",
+          "value": "br"
         }
       ]
     },
     {
       "source": "/(.*\\.wasm\\.br)",
-      "headers" : [
+      "headers": [
         {
-          "key" : "Content-Type",
-          "value" : "application/wasm"
+          "key": "Content-Type",
+          "value": "application/wasm"
         }
       ]
     }
   ]
+}
