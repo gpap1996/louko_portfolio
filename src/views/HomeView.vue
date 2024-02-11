@@ -20,7 +20,7 @@
           text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
         "
         :class="menu ? '-z-10' : ''"
-        class="absolute top-[15%] left-[50%] translate-x-[-50%] text-white noSelect px-4 text-[20px] w-screen sm:w-auto sm:text-[23px] sm:text-center flex flex-col items-center justify-center"
+        class="absolute top-[15%] left-[50%] translate-x-[-50%] text-white noSelect px-4 text-[20px] w-screen sm:w-auto sm:text-[23px] text-center flex flex-col items-center justify-center"
       >
         <Transition>
           <div v-if="tab == 'Welcome'">
