@@ -19,10 +19,11 @@
           -webkit-text-stroke-color: #1c1c1c;
           text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
         "
+        :class="menu ? '-z-10' : ''"
         class="absolute top-[15%] left-[50%] translate-x-[-50%] text-white noSelect px-4 text-[20px] w-screen sm:w-auto sm:text-[23px] sm:text-center flex flex-col items-center justify-center"
       >
         <Transition>
-          <div class="" v-if="tab == 'Welcome'">
+          <div v-if="tab == 'Welcome'">
             Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
           </div>
         </Transition>
@@ -48,7 +49,7 @@
             </div>
             <button
               @click="onOpenDialog(VirtualDiver)"
-              class="bg-white py-2 px-4 text-black mt-2 rounded-3xl w-full text-[14px] flex items-center justify-center"
+              class="bg-white py-2 px-4 text-black mt-2 rounded-3xl w-full text-[14px] sm:text-[18px] flex items-center justify-center"
             >
               VIEW PROJECT
               <div class="mdi mdi-arrow-right ml-1"></div>
@@ -57,19 +58,19 @@
         </Transition>
 
         <Transition>
-          <div class="" v-if="tab == 'Ar'">AR dark past</div>
+          <div v-if="tab == 'Ar'">AR dark past</div>
         </Transition>
 
         <Transition>
-          <div class="" v-if="tab == 'About'">More about me</div>
+          <div v-if="tab == 'About'">More about me</div>
         </Transition>
 
         <Transition>
-          <div class="" v-if="tab == 'Contact'">Contact</div>
+          <div v-if="tab == 'Contact'">Contact</div>
         </Transition>
 
         <Transition>
-          <div class="" v-if="tab == 'Garage'">Garage</div>
+          <div v-if="tab == 'Garage'">Garage</div>
         </Transition>
       </div>
 
@@ -113,8 +114,10 @@ import TheLoader from '@/components/Util/TheLoader.vue'
 import TheAppbar from '@/components/Layout/TheAppbar.vue'
 import { isMobile } from 'mobile-device-detect'
 
-import { markRaw, ref } from 'vue'
-
+import { computed, markRaw, ref } from 'vue'
+import { useBaseStore } from '@/stores/base'
+const base = useBaseStore()
+const menu = computed(() => base.menu)
 const dialog = ref(false)
 const dialogComponent = ref(null)
 const loader = ref(true)

@@ -29,7 +29,8 @@ const props = defineProps({
   stroke-width: 3;
   transition:
     stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 300ms ease-in;
 }
 .line1 {
   stroke-dasharray: 60 207;

@@ -1,31 +1,49 @@
 <template>
   <div class="fixed top-0 left-0 w-screen p-4 flex items-center justify-space-between">
-    <MenuButton :menu="menu" @toggleMenu="toggleMenu" />
+    <MenuButton :menu="menu" @toggleMenu="toggleMenu" style="z-index: 1" />
 
-    <div class="text-[22px] leading-6 text-black">
+    <div
+      :class="menu ? 'text-white' : 'text-black'"
+      class="text-[22px] leading-6 transition-all duration-300 cursor-pointer"
+      style="z-index: 1"
+      @click="$router.push('/')"
+    >
       LOUKOs <br />
       SHOWCASE
     </div>
-    <div
+    <!-- <div
       @click="toggle"
       :class="checkFullScreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'"
       class="mdi ml-auto text-[30px] cursor-pointer text-black"
-    ></div>
+    ></div> -->
+    <div v-if="menu" class="absolute top-0 left-0 min-h-screen w-full h-auto bg-black">
+      <NavigationMenu
+        v-motion
+        :initial="{
+          opacity: 0,
+          transition: {
+            duration: 300
+          }
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            duration: 300
+          }
+        }"
+      ></NavigationMenu>
+    </div>
   </div>
 </template>
 
 <script setup>
 import MenuButton from '../Util/MenuButton.vue'
+import NavigationMenu from '../Dialogs/NavigationMenu.vue'
+import { useBaseStore } from '@/stores/base'
+import { storeToRefs } from 'pinia'
+const base = useBaseStore()
 
-import { useFullscreen } from '@vueuse/core'
-import { computed, ref } from 'vue'
-
-const { isFullscreen, toggle } = useFullscreen()
-const checkFullScreen = computed(() => {
-  return isFullscreen.value
-})
-
-const menu = ref(false)
+const { menu } = storeToRefs(base)
 const toggleMenu = () => {
   menu.value = !menu.value
 }

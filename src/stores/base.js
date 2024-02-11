@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 export const useBaseStore = defineStore('base', () => {
-  return {}
+  const menu = ref(false)
+  return { menu }
 })
