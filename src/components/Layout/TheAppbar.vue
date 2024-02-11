@@ -8,7 +8,7 @@
     </div>
     <div
       @click="toggle"
-      :class="isFullscreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'"
+      :class="checkFullScreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen'"
       class="mdi ml-auto text-[30px] cursor-pointer text-black"
     ></div>
   </div>
@@ -18,9 +18,13 @@
 import MenuButton from '../Util/MenuButton.vue'
 
 import { useFullscreen } from '@vueuse/core'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const { isFullscreen, toggle } = useFullscreen()
+const checkFullScreen = computed(() => {
+  return isFullscreen.value
+})
+
 const menu = ref(false)
 const toggleMenu = () => {
   menu.value = !menu.value

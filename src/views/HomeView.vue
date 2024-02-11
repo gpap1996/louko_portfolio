@@ -19,49 +19,60 @@
           -webkit-text-stroke-color: #1c1c1c;
           text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
         "
-        class="absolute top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-white noSelect text-[20px] text-center"
+        class="fixed top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-white noSelect text-[20px] text-center"
       >
         <Transition>
-          <div class="text-[22px] w-screen p-10" v-if="tab == 'Welcome'">
+          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Welcome'">
             Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
           </div>
         </Transition>
 
         <Transition>
-          <div v-if="tab == 'Skills'">
+          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Skills'">
             Crafting Immersive Experiences in VR, AR, and Indie Games
           </div>
         </Transition>
 
         <Transition>
           <div v-if="tab == 'VirtualDiver'">
-            <div>Virtual Diver</div>
-            <button @click="onOpenDialog(VirtualDiver)" class="bg-white py-2 px-4 text-black">
+            <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10">Virtual Diver</div>
+            <button
+              @click="onOpenDialog(VirtualDiver)"
+              class="bg-white py-2 px-4 text-black mt-2 rounded-3xl"
+            >
               Open dialog
             </button>
           </div>
         </Transition>
 
         <Transition>
-          <div v-if="tab == 'Ar'">AR dark past</div>
+          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Ar'">
+            AR dark past
+          </div>
         </Transition>
 
         <Transition>
-          <div v-if="tab == 'About'">More about me</div>
+          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'About'">
+            More about me
+          </div>
         </Transition>
 
         <Transition>
-          <div v-if="tab == 'Contact'">Contact</div>
+          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Contact'">
+            Contact
+          </div>
         </Transition>
 
         <Transition>
-          <div v-if="tab == 'Garage'">Garage</div>
+          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Garage'">
+            Garage
+          </div>
         </Transition>
       </div>
 
       <TheLoader v-if="loader" />
       <UnityVue width="100vw" height="100vh" tabindex="-1" :unity="unityContext" />
-      <div v-if="dialog" class="fixed top-0 left-0 w-screen h-screen bg-black z-50">
+      <div v-if="dialog" class="absolute top-0 left-0 w-screen min-h-screen h-auto bg-black z-50">
         <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
       </div>
     </div>
@@ -177,12 +188,12 @@ unityContext
 * {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 canvas {
   cursor: grab !important;
   min-height: 100vh !important;
+  overflow: hidden !important;
 }
 
 .noSelect {
