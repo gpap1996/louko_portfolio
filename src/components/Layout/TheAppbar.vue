@@ -4,7 +4,7 @@
 
     <div class="text-[22px] leading-6 text-black">
       LOUKOs <br />
-      SHOWCASE
+      SHOWCASEE
     </div>
     <div
       @click="toggle"
