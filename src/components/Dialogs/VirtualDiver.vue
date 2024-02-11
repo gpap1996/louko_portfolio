@@ -1,10 +1,18 @@
 <template>
-  <div class="text-[white] h-auto w-full flex flex-col p-4 overflow-x-hidden">
+  <div class="text-[white] h-auto w-full flex flex-col">
     <button
       @click="emit('closeDialog')"
-      class="mdi ml-auto mdi-close text-[30px] bg-white text-black rounded-3xl w-10 h-10 flex items-center justify-center"
+      class="mdi mdi-close z-50 fixed top-4 right-4 text-[30px] bg-white text-black rounded-3xl w-10 h-10 flex items-center justify-center"
     ></button>
     <div class="flex flex-col items-center justify-center flex-grow">
+      <div class="h-screen relative">
+        <img class="h-full w-full object-cover opacity-50" src="@/assets/images/diver.jpg" />
+        <div
+          class="z-50 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-3xl"
+        >
+          Virtual Diver
+        </div>
+      </div>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim tempora ipsa totam accusantium
       minus aspernatur molestiae! Ipsa accusantium eligendi voluptatem quisquam culpa magnam,
       molestias eaque, vel molestiae unde incidunt quas? Ipsa expedita ea in inventore dolorem harum

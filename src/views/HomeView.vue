@@ -71,8 +71,14 @@
       </div>
 
       <TheLoader v-if="loader" />
-      <UnityVue width="100vw" height="100vh" tabindex="-1" :unity="unityContext" />
-      <div v-if="dialog" class="absolute top-0 left-0 w-screen min-h-screen h-auto bg-black z-50">
+      <UnityVue
+        :class="dialog ? 'hidden' : 'block'"
+        width="100vw"
+        height="100vh"
+        tabindex="-1"
+        :unity="unityContext"
+      />
+      <div v-if="dialog" class="absolute top-0 left-0 min-h-screen h-auto bg-black">
         <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
       </div>
     </div>
@@ -188,6 +194,7 @@ unityContext
 * {
   margin: 0;
   padding: 0;
+  /* overflow-x: hidden; */
 }
 
 canvas {
