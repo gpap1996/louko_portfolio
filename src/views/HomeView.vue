@@ -19,54 +19,57 @@
           -webkit-text-stroke-color: #1c1c1c;
           text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
         "
-        class="fixed top-[25%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-white noSelect text-[20px] text-center"
+        class="absolute top-[15%] left-[50%] translate-x-[-50%] text-white noSelect px-4 text-[20px] w-screen sm:w-auto sm:text-[23px] sm:text-center flex flex-col items-center justify-center"
       >
         <Transition>
-          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Welcome'">
+          <div class="" v-if="tab == 'Welcome'">
             Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
           </div>
         </Transition>
 
         <Transition>
-          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Skills'">
+          <div class="" v-if="tab == 'Skills'">
             Crafting Immersive Experiences in VR, AR, and Indie Games
           </div>
         </Transition>
 
         <Transition>
-          <div v-if="tab == 'VirtualDiver'">
-            <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10">Virtual Diver</div>
+          <div v-if="tab == 'VirtualDiver'" class="flex flex-col items-center sm:w-[80%]">
+            <div class="flex items-center justify-center gap-4 mb-2 text-start">
+              <div>
+                <div class="virtual-diver-image"></div>
+              </div>
+              <div class="flex flex-col">
+                <div class="font-bold">Virtual Diver</div>
+                <div class="text-[16px] sm:text-[18px]">
+                  An innovative platform for virtual underwater experiences.
+                </div>
+              </div>
+            </div>
             <button
               @click="onOpenDialog(VirtualDiver)"
-              class="bg-white py-2 px-4 text-black mt-2 rounded-3xl"
+              class="bg-white py-2 px-4 text-black mt-2 rounded-3xl w-full text-[14px] flex items-center justify-center"
             >
-              Open dialog
+              VIEW PROJECT
+              <div class="mdi mdi-arrow-right ml-1"></div>
             </button>
           </div>
         </Transition>
 
         <Transition>
-          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Ar'">
-            AR dark past
-          </div>
+          <div class="" v-if="tab == 'Ar'">AR dark past</div>
         </Transition>
 
         <Transition>
-          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'About'">
-            More about me
-          </div>
+          <div class="" v-if="tab == 'About'">More about me</div>
         </Transition>
 
         <Transition>
-          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Contact'">
-            Contact
-          </div>
+          <div class="" v-if="tab == 'Contact'">Contact</div>
         </Transition>
 
         <Transition>
-          <div class="sm:text-xl md:text-2xl xl:text-3xl w-screen px-10" v-if="tab == 'Garage'">
-            Garage
-          </div>
+          <div class="" v-if="tab == 'Garage'">Garage</div>
         </Transition>
       </div>
 
@@ -79,7 +82,23 @@
         :unity="unityContext"
       />
       <div v-if="dialog" class="absolute top-0 left-0 min-h-screen h-auto bg-black">
-        <component :is="dialogComponent" @closeDialog="onCloseDialog"></component>
+        <component
+          v-motion
+          :initial="{
+            opacity: 0,
+            transition: {
+              duration: 300
+            }
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              duration: 300
+            }
+          }"
+          :is="dialogComponent"
+          @closeDialog="onCloseDialog"
+        ></component>
       </div>
     </div>
   </div>
@@ -201,6 +220,18 @@ canvas {
   cursor: grab !important;
   min-height: 100vh !important;
   overflow: hidden !important;
+}
+
+.virtual-diver-image {
+  background: url('@/assets/images/diver1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  display: flex;
 }
 
 .noSelect {
