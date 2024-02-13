@@ -5,7 +5,7 @@
       class="w-screen h-screen bg-black flex items-center justify-center"
     >
       <button
-        @click="onChangePage"
+        @click="onEnter"
         class="text-black bg-white text-[22px] py-2 px-6 rounded-lg cursor-pointer"
       >
         Enter Louko's Showcase
@@ -20,57 +20,15 @@
           text-shadow: 0.7px 0.7px 0.7px #1c1c1c;
         "
         :class="menu ? '-z-10' : ''"
-        class="absolute top-[15%] left-[50%] translate-x-[-50%] text-white noSelect px-4 text-[20px] w-screen sm:w-auto sm:text-[23px] text-center flex flex-col items-center justify-center"
+        class="absolute top-[15%] left-[50%] translate-x-[-50%] text-white disable-text-select px-4 text-[20px] w-screen sm:w-auto sm:text-[23px] text-center flex flex-col items-center justify-center"
       >
         <Transition>
-          <div v-if="tab == 'Welcome'">
-            Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.
-          </div>
-        </Transition>
-
-        <Transition>
-          <div class="" v-if="tab == 'Skills'">
-            Crafting Immersive Experiences in VR, AR, and Indie Games
-          </div>
-        </Transition>
-
-        <Transition>
-          <div v-if="tab == 'VirtualDiver'" class="flex flex-col items-center sm:w-[80%]">
-            <div class="flex items-center justify-center gap-4 mb-2 text-start">
-              <div>
-                <div class="virtual-diver-image"></div>
-              </div>
-              <div class="flex flex-col">
-                <div class="font-bold">Virtual Diver</div>
-                <div class="text-[16px] sm:text-[18px]">
-                  An innovative platform for virtual underwater experiences.
-                </div>
-              </div>
-            </div>
-            <button
-              @click="onOpenDialog(VirtualDiver)"
-              class="bg-white py-2 px-4 text-black mt-2 rounded-3xl w-full text-[14px] sm:text-[18px] flex items-center justify-center"
-            >
-              VIEW PROJECT
-              <div class="mdi mdi-arrow-right ml-1"></div>
-            </button>
-          </div>
-        </Transition>
-
-        <Transition>
-          <div v-if="tab == 'Ar'">AR dark past</div>
-        </Transition>
-
-        <Transition>
-          <div v-if="tab == 'About'">More about me</div>
-        </Transition>
-
-        <Transition>
-          <div v-if="tab == 'Contact'">Contact</div>
-        </Transition>
-
-        <Transition>
-          <div v-if="tab == 'Garage'">Garage</div>
+          <ThePopup
+            v-if="popup.open"
+            :type="popup.type"
+            :content="popup.content"
+            @openDialog="onOpenDialog"
+          ></ThePopup>
         </Transition>
       </div>
 
@@ -106,31 +64,49 @@
 </template>
 
 <script setup>
+//Vue
+import { computed, markRaw, reactive, ref } from 'vue'
+import { useBaseStore } from '@/stores/base'
+
+//Plugins
 import UnityWebgl from 'unity-webgl'
 import UnityVue from 'unity-webgl/vue'
 import { useFullscreen } from '@vueuse/core'
-import VirtualDiver from '@/components/Dialogs/VirtualDiver.vue'
-import TheLoader from '@/components/Util/TheLoader.vue'
-import TheAppbar from '@/components/Layout/TheAppbar.vue'
 import { isMobile } from 'mobile-device-detect'
 
-import { computed, markRaw, ref } from 'vue'
-import { useBaseStore } from '@/stores/base'
+///Components
+import TheLoader from '@/components/Layout/TheLoader.vue'
+import ThePopup from '@/components/Layout/ThePopup.vue'
+import TheAppbar from '@/components/Layout/TheAppbar.vue'
+
+const { toggle } = useFullscreen()
+
 const base = useBaseStore()
+
 const menu = computed(() => base.menu)
+const page = ref('welcome')
+const appbar = ref(false)
+const popup = reactive({
+  open: false,
+  type: null,
+  content: {}
+})
 const dialog = ref(false)
 const dialogComponent = ref(null)
 const loadProgress = ref(0)
 const loader = ref(true)
-const appbar = ref(false)
-const tab = ref(null)
-const page = ref('welcome')
+
+const onEnter = () => {
+  //toggling fullscreen if the device is mobile
+  if (isMobile) toggle()
+  page.value = 'home'
+}
+
 const onOpenDialog = (component) => {
+  console.log('open')
   dialog.value = true
   dialogComponent.value = markRaw(component)
 }
-
-const { toggle } = useFullscreen()
 
 const onCloseDialog = () => {
   console.log('onclose')
@@ -138,9 +114,89 @@ const onCloseDialog = () => {
   dialogComponent.value = null
 }
 
-const onChangePage = () => {
-  if (isMobile) toggle()
-  page.value = 'home'
+const onClearTab = () => {
+  popup.open = false
+  popup.type = null
+  popup.content = {}
+}
+
+const onTabChange = (item) => {
+  switch (item) {
+    case 'Tab1Open':
+      popup.open = true
+      popup.type = 'text'
+      popup.content.title =
+        'Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.'
+      break
+    case 'Tab1Close':
+      onClearTab()
+      break
+    case 'Tab2Open':
+      popup.open = true
+      popup.type = 'text'
+      popup.content.title = 'Crafting Immersive Experiences in VR, AR, and Indie Games'
+      break
+    case 'Tab2Close':
+      onClearTab()
+      break
+    case 'Tab3Open':
+      popup.open = true
+      popup.type = 'card'
+      popup.content.title = 'VIRTUAL DIVER'
+      popup.content.subtitle = 'An innovative platform for virtual underwater experiences.'
+      popup.content.description =
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
+      break
+    case 'Tab3Close':
+      onClearTab()
+      break
+    case 'Tab4Open':
+      popup.open = true
+      popup.type = 'card'
+      popup.content.title = 'Augmented Reality'
+      popup.content.subtitle = 'The dark past...'
+      popup.content.description =
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
+      break
+    case 'Tab4Close':
+      onClearTab()
+      break
+    case 'Tab5Open':
+      popup.open = true
+      popup.type = 'card'
+      popup.content.title = 'About me'
+      popup.content.subtitle = 'A few things about me.'
+      popup.content.description =
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
+      break
+    case 'Tab5Close':
+      onClearTab()
+      break
+    case 'Tab6Open':
+      popup.open = true
+      popup.type = 'card'
+      popup.content.title = 'Contact'
+      popup.content.subtitle = 'Find me in social media.'
+      popup.content.description =
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
+      break
+    case 'Tab6Close':
+      onClearTab()
+      break
+    case 'Tab7Open':
+      popup.open = true
+      popup.type = 'card'
+      popup.content.title = 'Garage'
+      popup.content.subtitle = 'I make cars thanks.'
+      popup.content.description =
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
+      break
+    case 'Tab7Close':
+      onClearTab()
+      break
+    default:
+      break
+  }
 }
 
 //webgl init
@@ -165,52 +221,7 @@ unityContext
   .on('mounted', () => {
     appbar.value = true
     unityContext.on('showDialog', (data) => {
-      switch (data) {
-        case 'Tab1Open':
-          tab.value = 'Welcome'
-          break
-        case 'Tab1Close':
-          tab.value = null
-          break
-        case 'Tab2Open':
-          tab.value = 'Skills'
-          break
-        case 'Tab2Close':
-          tab.value = null
-          break
-        case 'Tab3Open':
-          tab.value = 'VirtualDiver'
-          break
-        case 'Tab3Close':
-          tab.value = null
-          break
-        case 'Tab4Open':
-          tab.value = 'Ar'
-          break
-        case 'Tab4Close':
-          tab.value = null
-          break
-        case 'Tab5Open':
-          tab.value = 'About'
-          break
-        case 'Tab5Close':
-          tab.value = null
-          break
-        case 'Tab6Open':
-          tab.value = 'Contact'
-          break
-        case 'Tab6Close':
-          tab.value = null
-          break
-        case 'Tab7Open':
-          tab.value = 'Garage'
-          break
-        case 'Tab7Close':
-          tab.value = null
-          break
-        default:
-          break
-      }
+      onTabChange(data)
     })
   })
 </script>
@@ -219,7 +230,6 @@ unityContext
 * {
   margin: 0;
   padding: 0;
-  /* overflow-x: hidden; */
 }
 
 canvas {
@@ -240,7 +250,7 @@ canvas {
   display: flex;
 }
 
-.noSelect {
+.disable-text-select {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -250,7 +260,7 @@ canvas {
   user-select: none;
 }
 
-.noSelect:focus {
+.disable-text-select:focus {
   outline: none !important;
 }
 
