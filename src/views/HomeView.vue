@@ -74,7 +74,7 @@
         </Transition>
       </div>
 
-      <TheLoader v-if="loader" />
+      <TheLoader v-if="loader" :loadProgress="loadProgress" />
       <UnityVue
         :class="dialog ? 'hidden' : 'block'"
         width="100vw"
@@ -120,6 +120,7 @@ const base = useBaseStore()
 const menu = computed(() => base.menu)
 const dialog = ref(false)
 const dialogComponent = ref(null)
+const loadProgress = ref(0)
 const loader = ref(true)
 const appbar = ref(false)
 const tab = ref(null)
@@ -153,6 +154,8 @@ const unityContext = new UnityWebgl({
 //webgl listeners
 unityContext
   .on('progress', (progress) => {
+    loadProgress.value = progress
+    console.log(progress)
     if (progress == 1)
       setTimeout(() => {
         loader.value = false
