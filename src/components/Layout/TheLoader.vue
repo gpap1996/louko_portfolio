@@ -16,9 +16,13 @@
           duration: 300
         }
       }"
-      class="text-[50px] font-bold bg-white text-black w-[175px] h-[175px] rounded-full flex items-center justify-center text-center"
+      class="text-[50px] font-bold w-[200PX] h-[200PX] rounded-full flex items-center justify-center border-2"
     >
-      {{ loadProgress }}%
+      <div
+        class="text-[50px] font-bold bg-white text-black w-[175px] h-[175px] rounded-full flex items-center justify-center text-center"
+      >
+        {{ loadProgress }}%
+      </div>
     </div>
   </div>
 </template>
