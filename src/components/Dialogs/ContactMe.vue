@@ -9,11 +9,11 @@
       <div
         class="z-50 text-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-[64px] leading-[100%] font-bold"
       >
-        VIRTUAL DIVER
+        CONTACT
       </div>
     </div>
     <div class="bg-[black] p-4">
-      <div class="title font-bold text-[30px] mb-5">I Used to love and respect</div>
+      <div class="title font-bold text-[30px] mb-5">Contact me men</div>
       <div class="title">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum
         ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur
@@ -52,7 +52,7 @@ const emit = defineEmits(['closeDialog'])
 
 <style lang="scss" scoped>
 .background-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/diver.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/contact.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
