@@ -4,43 +4,46 @@
       @click="emit('closeDialog')"
       class="mdi mdi-close z-50 fixed top-4 right-4 text-[30px] bg-white text-black rounded-3xl w-10 h-10 flex items-center justify-center"
     ></button>
-    <div class="h-screen relative shadow-2xl">
-      <div class="h-screen background-image"></div>
-      <div
-        class="z-50 text-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-[64px] leading-[100%] font-bold"
-      >
-        ABOUT
-      </div>
-    </div>
-    <div class="bg-[black] p-4">
-      <div class="title font-bold text-[30px] mb-5">Yes thanks</div>
-      <div class="title">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum
-        ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur
-        minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos
-        reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic
-        obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum
-        officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi
-        qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum
-        voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae
-        consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas
-        nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt
-        repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit
-        quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta
-        dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere
-        incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam
-        voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi
-        explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure
-        commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus.
-        Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error.
-        Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam
-        facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur,
-        quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit
-        quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem
-        fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque,
-        repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure!
-        Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio
-        explicabo ducimus suscipit excepturi quam, sapiente officiis.
+
+    <div class="bg-[black] p-6 flex flex-col align-center items-center">
+      <div class="text-center text-[64px] leading-[100%] font-bold my-10">About Me</div>
+
+      <div class="max-w-[800px]">
+        <div class="text-[18px]">
+          My name is Kostas Loukopoulos, a 27-year-old developer hailing from Athens, Greece. I
+          pursued my passion for technology by studying Computer Science at the University of West
+          Attica, where I honed my skills and laid the foundation for my career in software
+          development.
+        </div>
+
+        <div class="font-bold text-[30px] mt-5">Professional Experience:</div>
+
+        <div class="text-[18px]">
+          With over 3.5 years of professional experience as a Unity developer, I have had the
+          opportunity to work on a diverse range of projects, from immersive virtual reality
+          experiences to engaging augmented reality applications. My journey in the industry has
+          allowed me to collaborate with talented teams, tackle complex challenges, and continuously
+          expand my knowledge and expertise in game development and interactive media.
+        </div>
+        <div class="font-bold text-[30px] mt-5">Indie Game Development:</div>
+        <div class="text-[18px]">
+          In addition to my professional work, I am a passionate indie game developer on a mission
+          to bring my creative vision to life. Currently, I am dedicating my time and energy to the
+          development of "Loukos Garage," a simcade racing game that combines the excitement of
+          arcade-style gameplay with the depth of simulation mechanics. Through this project, I aim
+          to deliver an immersive and thrilling gaming experience that resonates with players around
+          the world.
+        </div>
+
+        <div class="font-bold text-[30px] mt-5">Future Endeavors:</div>
+        <div class="text-[18px]">
+          Driven by my love for technology and innovation, I am always eager to explore new
+          opportunities, push the boundaries of creativity, and make a meaningful impact in the
+          world of game development and interactive entertainment. Whether it's through crafting
+          captivating experiences, solving complex technical challenges, or inspiring others in the
+          industry, I am committed to continuously evolving and growing as a developer and a
+          creator.
+        </div>
       </div>
     </div>
   </div>
@@ -50,12 +53,4 @@
 const emit = defineEmits(['closeDialog'])
 </script>
 
-<style lang="scss" scoped>
-.background-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/aboutme.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-</style>
+<style lang="scss" scoped></style>

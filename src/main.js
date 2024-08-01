@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import Vue3Lottie from 'vue3-lottie'
 import { MotionPlugin } from '@vueuse/motion'
 
 import App from './App.vue'
@@ -13,7 +12,6 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(Vue3Lottie)
 app.use(MotionPlugin)
 
 app.mount('#app')

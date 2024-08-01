@@ -12,35 +12,91 @@
         VIRTUAL DIVER
       </div>
     </div>
-    <div class="bg-[black] p-4">
-      <div class="title font-bold text-[30px] mb-5">I Used to love and respect</div>
-      <div class="title">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum
-        ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur
-        minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos
-        reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic
-        obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum
-        officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi
-        qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum
-        voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae
-        consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas
-        nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt
-        repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit
-        quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta
-        dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere
-        incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam
-        voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi
-        explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure
-        commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus.
-        Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error.
-        Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam
-        facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur,
-        quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit
-        quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem
-        fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque,
-        repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure!
-        Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio
-        explicabo ducimus suscipit excepturi quam, sapiente officiis.
+    <div class="bg-[black] p-6 flex flex-col align-center items-center">
+      <div class="max-w-[800px]">
+        <div class="text-[18px]">
+          <strong> Virtual Diver </strong> is an immersive VR Unity application that transports
+          users to the stunning Greek island of Santorini, both above and below the water's surface.
+          With Virtual Diver, users can embark on a breathtaking exploration of the island's
+          underwater world, discovering vibrant marine life and captivating underwater landscapes.
+        </div>
+
+        <ul class="list-disc list-inside max-w-[800px] text-[18px]">
+          <div class="font-bold text-[30px] mt-5">Key Features:</div>
+
+          <li>
+            Exploration: Users can freely explore the underwater environments of Santorini,
+            experiencing the beauty and serenity of the ocean depths.
+          </li>
+          <li>
+            Interactive 3D Content: Dive deeper into the experience by watching 3D videos and
+            images, interacting with 3D models, and experiencing the island's topography firsthand.
+          </li>
+          <li>
+            Seamless Transition: Seamlessly transition between underwater and above-water
+            exploration, allowing users to enjoy both aspects of Santorini's scenery.
+          </li>
+
+          <li>
+            Virtual Reality Experience: Virtual Diver is optimized for VR experiences, providing an
+            immersive and engaging journey for users wearing VR headsets.
+          </li>
+
+          <li>
+            VRTK Integration: Leveraging the power of VRTK, Virtual Diver offers intuitive VR
+            interactions and controls, enhancing the user experience.
+          </li>
+
+          <li>
+            Crest Ocean URP: The application utilizes Crest Ocean URP for realistic and dynamic
+            ocean simulation, bringing the underwater environment to life with stunning visuals and
+            effects.
+          </li>
+        </ul>
+        <ul class="list-disc list-inside max-w-[800px] text-[18px]">
+          <div class="font-bold text-[30px] mt-5">Role and Technologies:</div>
+
+          As the developer of Virtual Diver, I was responsible for:
+
+          <li>
+            Implementing VR functionality using VRTK to create immersive interactions and controls.
+          </li>
+
+          <li>
+            Integrating Crest Ocean URP to simulate realistic underwater environments and ocean
+            dynamics.
+          </li>
+
+          <li>
+            Designing and implementing the user interface for accessing 3D content, videos, and
+            images.
+          </li>
+
+          <li>
+            Optimizing performance to ensure smooth gameplay and VR experience across different
+            platforms.
+          </li>
+        </ul>
+
+        <div class="font-bold text-[30px] mt-5">Experience Santorini Like Never Before:</div>
+
+        <div class="text-[18px]">
+          Virtual Diver offers users a unique opportunity to experience Santorini in a whole new
+          way. Whether you're marveling at the breathtaking underwater scenery, interacting with 3D
+          models, or simply soaking in the island's beauty, Virtual Diver promises an unforgettable
+          adventure.
+        </div>
+        <div class="font-bold text-[30px] mt-5">Get Ready to Dive In:</div>
+        <div class="text-[18px]">
+          Immerse yourself in the wonders of Santorini with Virtual Diver. Put on your VR headset,
+          explore the depths of the ocean, and embark on an unforgettable journey beneath the waves.
+          Are you ready to dive in?
+        </div>
+
+        <div class="container mt-5">
+          <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+          </iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -52,10 +108,28 @@ const emit = defineEmits(['closeDialog'])
 
 <style lang="scss" scoped>
 .background-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/diver.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/diver_bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>

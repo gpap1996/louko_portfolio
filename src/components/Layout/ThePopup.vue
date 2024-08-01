@@ -5,9 +5,10 @@
         <div class="flex items-center justify-center gap-4 mb-2 text-start">
           <div>
             <div
+              v-if="props.content.title != 'VIRTUAL DIVER' && props.content.image"
               :style="`background: url(${content.image});  background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 12px; width: 100px; min-width: 100px; height: 100px; display: flex;`"
-              class="virtual-diver-image"
             ></div>
+            <img v-else :src="props.content.image" />
           </div>
           <div class="flex flex-col">
             <div @click="onOpenDialog" class="flex cursor-pointer">
@@ -58,7 +59,7 @@ const onOpenDialog = () => {
       emit('openDialog', ContactMe)
       break
 
-    case 'Garage':
+    case "Louko's Garage":
       emit('openDialog', LoukosGarage)
       break
 

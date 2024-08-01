@@ -4,43 +4,68 @@
       @click="emit('closeDialog')"
       class="mdi mdi-close z-50 fixed top-4 right-4 text-[30px] bg-white text-black rounded-3xl w-10 h-10 flex items-center justify-center"
     ></button>
-    <div class="h-screen relative shadow-2xl">
-      <div class="h-screen background-image"></div>
-      <div
-        class="z-50 text-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-100%] text-[64px] leading-[100%] font-bold"
-      >
-        Augmented Reality
+
+    <div class="bg-[black] p-6 flex flex-col align-center items-center">
+      <div class="text-center text-[64px] leading-[100%] font-bold my-10">
+        Augmented Reality (AR) Apps
       </div>
-    </div>
-    <div class="bg-[black] p-4">
-      <div class="title font-bold text-[30px] mb-5">PLSSSS Noooo</div>
-      <div class="title">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum
-        ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur
-        minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos
-        reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic
-        obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum
-        officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi
-        qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum
-        voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae
-        consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas
-        nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt
-        repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit
-        quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta
-        dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere
-        incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam
-        voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi
-        explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure
-        commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus.
-        Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error.
-        Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam
-        facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur,
-        quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit
-        quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem
-        fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque,
-        repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure!
-        Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio
-        explicabo ducimus suscipit excepturi quam, sapiente officiis.
+
+      <div class="max-w-[800px]">
+        <div class="text-[18px]">
+          In this category, I present a series of AR applications designed to enhance the museum
+          experience through interactive digital content. Leveraging the power of Augmented Reality
+          technology, users can engage with historical artifacts, architectural wonders, and
+          immersive 3D models right before their eyes. These AR apps offer a unique blend of
+          education and entertainment, bringing museum exhibits to life in captivating ways.
+        </div>
+
+        <ul class="list-disc list-inside max-w-[800px] text-[18px]">
+          <div class="font-bold text-[30px] mt-5">Key Features:</div>
+
+          <li>
+            Augmented Reality Experience: Utilizing Vuforia, these AR apps provide an immersive and
+            interactive experience that overlays digital content onto the real-world environment.
+          </li>
+          <li>
+            3D Object Recognition: Users can witness historical buildings, artifacts, and other 3D
+            objects come to life through the AR view, enhancing their understanding and appreciation
+            of museum exhibits.
+          </li>
+          <li>
+            Educational Content: Seamlessly integrated with museum exhibits, the AR apps offer
+            educational insights, historical context, and interactive storytelling to enrich the
+            visitor experience.
+          </li>
+
+          <li>
+            Engaging Interactions: Users can interact with AR elements by exploring, rotating, and
+            zooming in on 3D models, fostering curiosity and deeper engagement with the subject
+            matter.
+          </li>
+
+          <li>
+            Multiple Museum Locations: The AR apps are designed to cater to various museum
+            environments, offering tailored experiences for different exhibits and collections.
+          </li>
+        </ul>
+
+        <div class="font-bold text-[30px] mt-5">Technology:</div>
+
+        <div class="text-[18px]">
+          Vuforia, a leading Augmented Reality platform, is the backbone of these AR applications.
+          Its robust object recognition and tracking capabilities enable seamless integration of
+          digital content with the physical world. By harnessing the potential of Vuforia, these AR
+          apps deliver compelling and immersive experiences that bridge the gap between the virtual
+          and real worlds.
+        </div>
+        <div class="font-bold text-[30px] mt-5">Immerse Yourself in History:</div>
+        <div class="text-[18px]">
+          With these AR apps, users are invited to embark on a journey through time and space,
+          exploring the wonders of history and culture in an entirely new light. Witness ancient
+          civilizations, marvel at architectural masterpieces, and interact with artifacts like
+          never before. Get ready to immerse yourself in a world where the past meets the present,
+          all through the lens of Augmented Reality.
+        </div>
       </div>
     </div>
   </div>
@@ -50,12 +75,4 @@
 const emit = defineEmits(['closeDialog'])
 </script>
 
-<style lang="scss" scoped>
-.background-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/ar.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-</style>
+<style lang="scss" scoped></style>
