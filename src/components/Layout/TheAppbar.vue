@@ -1,7 +1,5 @@
 <template>
   <div class="fixed top-0 left-0 w-screen p-4 flex items-center justify-space-between">
-    <MenuButton :menu="menu" @toggleMenu="toggleMenu" style="z-index: 1" />
-
     <div
       :class="menu ? 'text-white' : 'text-black'"
       class="text-[22px] leading-6 transition-all duration-300 cursor-pointer"
@@ -37,16 +35,12 @@
 </template>
 
 <script setup>
-import MenuButton from '../Util/MenuButton.vue'
 import NavigationMenu from '../Dialogs/NavigationMenu.vue'
 import { useBaseStore } from '@/stores/base'
 import { storeToRefs } from 'pinia'
 const base = useBaseStore()
 
 const { menu } = storeToRefs(base)
-const toggleMenu = () => {
-  menu.value = !menu.value
-}
 </script>
 
 <style lang="scss" scoped>

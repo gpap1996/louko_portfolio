@@ -60,7 +60,7 @@ const emit = defineEmits(['closeDialog'])
 
 <style lang="scss" scoped>
 .background-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/AboutMeBG (2).png');
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/aboutme_bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

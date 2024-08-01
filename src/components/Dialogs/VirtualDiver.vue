@@ -15,10 +15,13 @@
     <div class="bg-[black] p-6 flex flex-col align-center items-center">
       <div class="max-w-[800px]">
         <div class="text-[18px]">
-          <strong> Virtual Diver </strong> is an immersive VR Unity application that transports
-          users to the stunning Greek island of Santorini, both above and below the water's surface.
-          With Virtual Diver, users can embark on a breathtaking exploration of the island's
-          underwater world, discovering vibrant marine life and captivating underwater landscapes.
+          <a @click="onOpenVirtualDiver" class="font-bold underline cursor-pointer"
+            >Virtual Diver</a
+          >
+          is an immersive VR Unity application that transports users to the stunning Greek island of
+          Santorini, both above and below the water's surface. With Virtual Diver, users can embark
+          on a breathtaking exploration of the island's underwater world, discovering vibrant marine
+          life and captivating underwater landscapes.
         </div>
 
         <div style="padding: 56.25% 0 0 0; position: relative" class="my-5">
@@ -128,6 +131,10 @@
 
 <script setup>
 const emit = defineEmits(['closeDialog'])
+
+const onOpenVirtualDiver = () => {
+  window.open('https://www.virtualdiver.gr/')
+}
 </script>
 
 <style lang="scss" scoped>

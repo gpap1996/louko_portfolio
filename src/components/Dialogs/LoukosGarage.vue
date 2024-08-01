@@ -58,13 +58,53 @@
           landscapes and challenging tracks. Whether you're a seasoned racer or a casual gamer
           looking for some high-octane fun, "Louko's Garage" promises an unforgettable ride.
         </div>
+
+        <div class="flex align-center gap-6 mt-[80px]">
+          <div
+            class="cursor-pointer"
+            v-for="(social, i) in socials"
+            :key="i"
+            @click="onSocialOpen(social.type)"
+            :class="social.type == 'tiktok' ? '' : 'mt-1 ml-auto'"
+          >
+            <img class="w-[30px]" :src="social.icon" :alt="social.icon" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { reactive } from 'vue'
+
 const emit = defineEmits(['closeDialog'])
+const socials = reactive([
+  {
+    icon: '/images/instagram.png',
+
+    type: 'instagram'
+  },
+
+  {
+    icon: '/images/tik-tok.png',
+    type: 'tiktok'
+  }
+])
+const onSocialOpen = (type) => {
+  switch (type) {
+    case 'instagram':
+      window.open('https://www.instagram.com/loukos.garage/')
+      break
+
+    case 'tiktok':
+      window.open('https://www.tiktok.com/@loukosgarage')
+      break
+
+    default:
+      break
+  }
+}
 </script>
 
 <style lang="scss" scoped>

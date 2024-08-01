@@ -5,13 +5,13 @@
         <div class="flex items-center justify-center gap-4 mb-2 text-start">
           <div>
             <div
-              v-if="props.id != 'virtual_diver' && props.content.image"
+              v-if="props.id != 'virtual_diver' && props.id != 'ar' && props.content.image"
               :style="`background: url(${content.image});  background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 12px; width: 100px; min-width: 100px; height: 100px; display: flex;`"
             ></div>
             <img
-              v-else-if="props.id == 'virtual_diver' && props.content.image"
+              v-else-if="(props.id == 'virtual_diver' || props.id == 'ar') && props.content.image"
               :src="props.content.image"
-              style="width: 130px"
+              :style="`width: ${props.id == 'virtual_diver' ? '130px' : '60px'}`"
             />
           </div>
           <div class="flex flex-col">
