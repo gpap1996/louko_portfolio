@@ -26,6 +26,15 @@
           thrilling ride across various terrains.
         </div>
 
+        <div style="padding: 56.25% 0 0 0; position: relative" class="my-5">
+          <iframe
+            src="https://player.vimeo.com/video/993441153?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+            title="Louko's Garage Trailer"
+          ></iframe>
+        </div>
         <ul class="list-disc list-inside max-w-[800px] text-[18px]">
           <div class="font-bold text-[30px] mt-5">Features:</div>
 
@@ -48,11 +57,6 @@
           Join me in "Louko's Garage" and embark on an adrenaline-fueled journey through stunning
           landscapes and challenging tracks. Whether you're a seasoned racer or a casual gamer
           looking for some high-octane fun, "Louko's Garage" promises an unforgettable ride.
-        </div>
-
-        <div class="container mt-5">
-          <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-          </iframe>
         </div>
       </div>
     </div>

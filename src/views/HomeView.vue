@@ -27,6 +27,7 @@
             v-if="popup.open"
             :type="popup.type"
             :content="popup.content"
+            :id="popup.id"
             @openDialog="onOpenDialog"
           ></ThePopup>
         </Transition>
@@ -127,6 +128,7 @@ const onTabChange = (item) => {
       popup.type = 'text'
       popup.content.title =
         'Welcome! I am Costas Loukopoulos, a unity developer based in Athens, Greece.'
+      popup.id = 'welcome'
       break
     case 'Tab1Close':
       onClearTab()
@@ -135,6 +137,8 @@ const onTabChange = (item) => {
       popup.open = true
       popup.type = 'text'
       popup.content.title = 'Crafting Immersive Experiences in VR, AR, and Indie Games'
+      popup.id = 'somewords'
+
       break
     case 'Tab2Close':
       onClearTab()
@@ -142,6 +146,8 @@ const onTabChange = (item) => {
     case 'Tab3Open':
       popup.open = true
       popup.type = 'card'
+      popup.id = 'virtual_diver'
+
       popup.content = {
         title: 'VIRTUAL DIVER',
         subtitle: 'An innovative platform for virtual underwater experiences.',
@@ -156,9 +162,12 @@ const onTabChange = (item) => {
     case 'Tab4Open':
       popup.open = true
       popup.type = 'card'
+      popup.id = 'ar'
+
       popup.content = {
         title: 'Augmented Reality',
-        subtitle: 'The Dark Past ...',
+        subtitle:
+          'Bring museum exhibits to life with immersive AR experiences using Vuforia technology.',
         description:
           'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
       }
@@ -169,9 +178,12 @@ const onTabChange = (item) => {
     case 'Tab5Open':
       popup.open = true
       popup.type = 'card'
+      popup.id = 'aboutme'
+
       popup.content = {
         title: 'About me',
-        subtitle: 'Yes Gwsntas thenjs',
+        subtitle:
+          'Learn about Kostas Loukopoulos, Unity developer and passionate indie game creator.',
         description:
           'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
       }
@@ -183,9 +195,11 @@ const onTabChange = (item) => {
     case 'Tab6Open':
       popup.open = true
       popup.type = 'card'
+      popup.id = 'contact'
+
       popup.content = {
         title: 'Contact',
-        subtitle: 'Soling and boming',
+        subtitle: 'Get in touch with Kostas for collaborations, inquiries, or more information.',
         description:
           'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.'
       }
@@ -196,9 +210,11 @@ const onTabChange = (item) => {
     case 'Tab7Open':
       popup.open = true
       popup.type = 'card'
+      popup.id = 'garage'
       popup.content = {
         title: "Louko's Garage",
-        subtitle: 'I make cars thanks',
+        subtitle:
+          "Race in 'Louko's Garage,' a simcade game with diverse terrains and customizable vehicles.",
         description:
           'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, debitis. Fuga culpa earum ex minima accusamus nihil cumque dolorem eum nemo. Eaque officia in, dolorem consequuntur minima nulla labore ipsum. Sequi, recusandae laborum. Quibusdam, modi! Aliquam nemo ut eos reiciendis optio porro voluptatibus eius cumque minima, incidunt sunt similique hic obcaecati iure quis soluta maiores ipsam? Sunt doloribus unde officia! Eos tempora earum officia inventore aperiam illo explicabo, reprehenderit alias fugit rem, totam non excepturi qui voluptas suscipit iusto commodi asperiores ipsum dignissimos temporibus sequi. Rerum voluptatem tempore labore voluptatibus. At qui omnis maxime impedit distinctio porro quae consequatur consequuntur animi recusandae ipsa, velit sit nemo laboriosam vitae nulla quas nobis suscipit? Molestiae, consequatur ut? Nesciunt quidem magni dicta nam. Incidunt repellendus rem quibusdam molestiae. Quisquam modi, corrupti doloribus beatae, reprehenderit quidem omnis perferendis itaque tempora consectetur quaerat officiis asperiores dicta dignissimos facilis. Dicta, numquam? Officia ducimus similique natus! Provident. Sunt facere incidunt cumque consectetur dignissimos asperiores ab pariatur provident ad? Ullam voluptatem cupiditate maiores, molestias repellendus dicta facilis animi excepturi explicabo, nulla nihil laborum est autem temporibus molestiae esse? Facere ea nihil iure commodi, vel id ad doloremque! Fuga, saepe eaque provident quia esse obcaecati delectus. Neque ab quod id magni accusamus veniam dignissimos earum sint! Fugit, molestias error. Architecto aspernatur obcaecati minima magni itaque quae possimus, sunt veniam quibusdam facilis ullam quaerat quia cupiditate at atque id adipisci? Cupiditate, id? Tenetur, quibusdam libero. Maxime obcaecati alias dignissimos aspernatur. Nulla, sed reprehenderit quas commodi vel nihil ad ratione officiis ea tenetur qui officia quae iusto? Sed quis autem fugit tempore modi? Cumque cum nesciunt eligendi vero suscipit! Numquam, sapiente! Eaque, repellat ducimus. Mollitia maxime numquam, repudiandae quas dolores magni aperiam et iure! Laborum assumenda, molestias nihil accusamus, magnam dolores corporis sunt distinctio explicabo ducimus suscipit excepturi quam, sapiente officiis.',
         image: '/images/garage.png'

@@ -21,6 +21,16 @@
           underwater world, discovering vibrant marine life and captivating underwater landscapes.
         </div>
 
+        <div style="padding: 56.25% 0 0 0; position: relative" class="my-5">
+          <iframe
+            src="https://player.vimeo.com/video/993443759?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+            title="PanoramaVrDiver"
+          ></iframe>
+        </div>
+
         <ul class="list-disc list-inside max-w-[800px] text-[18px]">
           <div class="font-bold text-[30px] mt-5">Key Features:</div>
 
@@ -86,16 +96,30 @@
           models, or simply soaking in the island's beauty, Virtual Diver promises an unforgettable
           adventure.
         </div>
+        <div style="padding: 56.25% 0 0 0; position: relative" class="my-5">
+          <iframe
+            src="https://player.vimeo.com/video/993444158?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+            title="WalkVrDiver"
+          ></iframe>
+        </div>
+
         <div class="font-bold text-[30px] mt-5">Get Ready to Dive In:</div>
         <div class="text-[18px]">
           Immerse yourself in the wonders of Santorini with Virtual Diver. Put on your VR headset,
           explore the depths of the ocean, and embark on an unforgettable journey beneath the waves.
           Are you ready to dive in?
         </div>
-
-        <div class="container mt-5">
-          <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-          </iframe>
+        <div style="padding: 56.25% 0 0 0; position: relative" class="my-5">
+          <iframe
+            src="https://player.vimeo.com/video/993443246?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+            title="UnderWaterVrDiver"
+          ></iframe>
         </div>
       </div>
     </div>

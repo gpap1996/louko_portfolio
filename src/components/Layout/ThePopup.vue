@@ -5,10 +5,14 @@
         <div class="flex items-center justify-center gap-4 mb-2 text-start">
           <div>
             <div
-              v-if="props.content.title != 'VIRTUAL DIVER' && props.content.image"
+              v-if="props.id != 'virtual_diver' && props.content.image"
               :style="`background: url(${content.image});  background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 12px; width: 100px; min-width: 100px; height: 100px; display: flex;`"
             ></div>
-            <img v-else :src="props.content.image" />
+            <img
+              v-else-if="props.id == 'virtual_diver' && props.content.image"
+              :src="props.content.image"
+              style="width: 130px"
+            />
           </div>
           <div class="flex flex-col">
             <div @click="onOpenDialog" class="flex cursor-pointer">
@@ -36,30 +40,31 @@ import ContactMe from '@/components/Dialogs/ContactMe.vue'
 import LoukosGarage from '@/components/Dialogs/LoukosGarage.vue'
 
 const props = defineProps({
+  id: String,
   type: String,
   content: Object
 })
 
 const emit = defineEmits('openDialog')
 const onOpenDialog = () => {
-  switch (props.content.title) {
-    case 'VIRTUAL DIVER':
+  switch (props.id) {
+    case 'virtual_diver':
       emit('openDialog', VirtualDiver)
       break
 
-    case 'Augmented Reality':
+    case 'ar':
       emit('openDialog', AugmentedReality)
       break
 
-    case 'About me':
+    case 'aboutme':
       emit('openDialog', AboutMe)
       break
 
-    case 'Contact':
+    case 'contact':
       emit('openDialog', ContactMe)
       break
 
-    case "Louko's Garage":
+    case 'garage':
       emit('openDialog', LoukosGarage)
       break
 
