@@ -109,7 +109,7 @@ const onSocialOpen = (type) => {
 
 <style lang="scss" scoped>
 .background-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/garage_bg.png');
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgb(0, 0, 0)), url('/images/garage_bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
